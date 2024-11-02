@@ -35,5 +35,13 @@ class CampusOffice{
             return this.campusOfficeNumber;
         }
     }
+
+    static fromRow(row) {
+        return new CampusOffice(
+            row.campusOfficeID,
+            row.campusOfficeBranch,
+            row.campusOfficeNumber
+        );
+    }
 }
 module.exports = CampusOffice;
