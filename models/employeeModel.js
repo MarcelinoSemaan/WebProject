@@ -1,7 +1,5 @@
-class Employee
-{
-    constructor(employeeID, schoolIDFK, employeeName, employeeType, employeeContact)
-    {
+class Employee {
+    constructor(employeeID, schoolIDFK, employeeName, employeeType, employeeContact) {
         this.employeeID = employeeID;
         this.schoolIDFK = schoolIDFK;
         this.employeeName = employeeName;
