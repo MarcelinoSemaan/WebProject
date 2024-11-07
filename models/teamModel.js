@@ -16,4 +16,4 @@ class Team {
     }
 }
 
-module.exports = CampusOffice;
+module.exports = Team;
