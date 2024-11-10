@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const campusOfficeRoute = require('./routes/campusOfficeRoute');
+const driverRoute = require('./routes/drverRoute');
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ app.use(express.json()); // Parses incoming JSON requests
 
 // Routes
 app.use('/api/campusOffice', campusOfficeRoute);
+app.use('/api/driver', driverRoute);
 
 // Root route
 app.get('/', (req, res) => {

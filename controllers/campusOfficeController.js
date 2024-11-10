@@ -10,7 +10,6 @@ class CampusOfficeController {
             console.error('Error fetching campus office:', error);
             res.status(500).json({message: 'Internal server error'});
         }
-
     }
 
     async getCampusOfficeById(req, res) {
@@ -81,7 +80,7 @@ class CampusOfficeController {
             if (!success) {
                 return res.status(404).json({message: 'Campus office not found'});
             }
-            res.json({message: 'Country deleted successfully'});
+            res.json({message: 'Campus deleted successfully'});
         } catch (error) {
             console.error('Error deleting campus office:', error);
             res.status(500).json({message: 'Internal server error'});
