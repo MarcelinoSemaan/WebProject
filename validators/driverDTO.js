@@ -2,22 +2,22 @@ const {body, param, validationResult} = require('express-validator');
 
 const validateDriver = [
     body('driverName')
-        .isString()
-        .withMessage('driver name must be a string')
         .notEmpty()
-        .withMessage('driver name is required'),
+        .withMessage('driver name is required')
+        .isString()
+        .withMessage('driver name must be a string'),
     body('driverNumber')
-        .isInt()
-        .withMessage('driver Number must be Int')
         .notEmpty()
         .withMessage('driver Number must not be empty')
+        .isInt()
+        .withMessage('driver Number must be Int')
         .isMobilePhone('ar-LB')
         .withMessage('The number should be valid Lebanese Number (Currently doesnt work with landline)'),
     body('driverRegion')
-        .isString()
-        .withMessage('driverRegion must be a string')
         .notEmpty()
         .withMessage('driver region must not be empty')
+        .isString()
+        .withMessage('driverRegion must be a string')
         .toLowerCase(),
     (req, res, next) => {
         const errors = validationResult(req);

@@ -2,15 +2,15 @@ const {body, param, validationResult} = require('express-validator');
 
 const validateCampusOffice = [
     body('campusOfficeBranch')
-        .isInt()
-        .withMessage('Campus Office Branch must be Int')
-        .notEmpty()
-        .withMessage('Campus Office Branch must not be empty'),
-    body('campusOfficeNumber')
-        .isInt()
-        .withMessage('Campus Office Number must be Int')
         .notEmpty()
         .withMessage('Campus Office Branch must not be empty')
+        .isInt()
+        .withMessage('Campus Office Branch must be Int'),
+    body('campusOfficeNumber')
+        .notEmpty()
+        .withMessage('Campus Office Branch must not be empty')
+        .isInt()
+        .withMessage('Campus Office Number must be Int')
         .isMobilePhone('ar-LB')
         .withMessage('The number should be valid Lebanese Number (Currently doesnt work with landline)'),
     (req, res, next) => {
