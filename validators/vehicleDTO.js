@@ -49,5 +49,4 @@ const validateVehicleId =[
 module.exports = [
     validateVehicle,
     validateVehicleId,
-
 ]

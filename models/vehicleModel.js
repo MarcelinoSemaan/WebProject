@@ -13,7 +13,7 @@ class Vehicle{
             row.vehicle_reg_numb,
             row.driver_driverID,
             row.vehicle_brand,
-            row_vehicleType,
+            row.vehicle_type,
             row.vehilce_capacity
         )
     }

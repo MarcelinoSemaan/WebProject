@@ -1,7 +1,7 @@
 const vehicleService = require('../services/vehicleService')
 
 
-class VehicleController {
+class vehicleController {
     async getAllVehicles(req, res) {
         try {
             const vehicles = await vehicleService.getAllVehicles()
@@ -26,7 +26,7 @@ class VehicleController {
         }
     }
 
-    async getDriverByRegion(req, res) {
+    async getVehicleByRegion(req, res) {
         try {
             const region = req.params.id;
             const vehicle = await vehicleService.getVehicleByRegion(region);
@@ -83,4 +83,41 @@ class VehicleController {
             res.status(500).json({message: 'Internal server error'});
         }
     }
+
+    async updateVehicle(req,res)
+    {
+        try{
+            const regNumb = req.params.id;
+            const driverID = req.params.id2;
+            const {vehicleBrand,vehicleType,vehicleCapacity} = req.body;
+            if(!regNumb || !driverID)
+            {
+                return res.status(400).json({message: 'Vehicle reg number and driver are req'});
+            }
+            const success = await vehicleService.updateVehicle(regNumb,driverID,{vehicleBrand,vehicleType,vehicleCapacity})
+            res.status(201).json(success);
+            if (!success) {
+                return res.status(404).json({message: 'vehicle not found or no changes made'});
+            }
+            res.json({message: 'driver updated successfully'});
+        }catch (error) {
+            console.error('Error creating vehicle: ', error);
+            res.status(500).json({message: 'Internal server error'});
+        }
+    }
+    async deleteVehicle(req,res){
+        try {
+            const id = req.params.id;
+            const success = await vehicleService.deleteVehicle(id);
+            if (!success) {
+                return res.status(404).json({message: 'vehicle is not found'})
+            }
+            res.json({message: 'driver got deleted'});
+        }catch(error){
+            console.log('Error deleting vehicle: ', error);
+            res.status(500).json({message: 'Internal server error'});
+        }
+    }
 }
+
+module.exports = new vehicleController();
